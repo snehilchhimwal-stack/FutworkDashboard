@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Futwork Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Top Navigation -->
+    <div class="top-bar">
+      <button class="top-btn" onclick="window.location.href='https://snehilchhimwal-stack.github.io/FutworkDashboard/'">← Back to Data Entry</button>
+      <h2>Futwork Dashboard</h2>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters">
+      <label>Region</label>
+      <select id="regionFilter" onchange="updateDashboard()">
+        <option value="all">All</option>
+        <option>Western</option>
+        <option>Thane</option>
+        <option>Navi Mumbai</option>
+        <option>Central</option>
+      </select>
+
+      <label>From</label>
+      <input id="startDate" type="date" onchange="updateDashboard()" />
+
+      <label>To</label>
+      <input id="endDate" type="date" onchange="updateDashboard()" />
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="summary-grid">
+      <div class="card"><h4>Total Leads</h4><p id="cardTotalLeads">0</p></div>
+      <div class="card"><h4>Leads Concluded</h4><p id="cardLeadsConcluded">0</p></div>
+      <div class="card"><h4>Connected Leads</h4><p id="cardConnected">0</p></div>
+      <div class="card"><h4>Not Connected (Busy)</h4><p id="cardBusy">0</p></div>
+      <div class="card"><h4>Not Connected (No Answer)</h4><p id="cardNoAnswer">0</p></div>
+      <div class="card"><h4>Not Connected (Failed)</h4><p id="cardFailed">0</p></div>
+      <div class="card"><h4>Leads Pending</h4><p id="cardPending">0</p></div>
+      <div class="card"><h4>Leads in Opportunity</h4><p id="cardOpportunity">0</p></div>
+      <div class="card"><h4>Site Visits</h4><p id="cardSiteVisits">0</p></div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="charts">
+      <div class="chart-row">
+        <div class="chart-box" id="lineChartBox">
+          <h3>Leads Trend (Line)</h3>
+          <canvas id="lineChart"></canvas>
+        </div>
+
+        <div class="chart-box fade" id="horizontalChartBox">
+          <h3>Leads by Region (Horizontal)</h3>
+          <canvas id="horizontalChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
