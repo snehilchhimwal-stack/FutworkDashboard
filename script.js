@@ -5,12 +5,6 @@ function switchTab(event, tabId) {
   event.target.classList.add('active');
 }
 
-function saveToStorage(entry) {
-  const data = JSON.parse(localStorage.getItem("futworkData")) || [];
-  data.push(entry);
-  localStorage.setItem("futworkData", JSON.stringify(data));
-}
-
 // TAB 1: Leads Added
 function submitLeads() {
   const region = document.getElementById('region1').value;
@@ -23,18 +17,6 @@ function submitLeads() {
   document.getElementById('outOpp').textContent = opp || '0';
   document.getElementById('outSite').textContent = site || '0';
   document.getElementById('output1').style.display = 'block';
-
-  saveToStorage({
-  date: new Date().toISOString().split("T")[0],
-  region,
-  leadsCH: ch,
-  leadsOpp: opp,
-  siteVisits: site,
-  totalLeads: totalLeadsValue,
-  connected: connectedValue,
-  pending: pendingValue
-});
-
 }
 
 // TAB 2: Database
@@ -49,18 +31,6 @@ function submitDatabase() {
   document.getElementById('outFailed').textContent = document.getElementById('leadsFailed').value || '0';
   document.getElementById('outPending').textContent = document.getElementById('leadsPending').value || '0';
   document.getElementById('output2').style.display = 'block';
-
-  saveToStorage({
-  date: new Date().toISOString().split("T")[0],
-  region,
-  leadsCH: ch,
-  leadsOpp: opp,
-  siteVisits: site,
-  totalLeads: totalLeadsValue,
-  connected: connectedValue,
-  pending: pendingValue
-});
-
 }
 
 // TAB 3: Daily Lead Qualification
